@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Company]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(250) NOT NULL UNIQUE, 
+    [Remarks] VARCHAR(250) NOT NULL
+)

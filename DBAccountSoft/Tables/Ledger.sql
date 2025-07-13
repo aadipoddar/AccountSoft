@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Ledger]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(250) NOT NULL UNIQUE, 
+    [Remarks] VARCHAR(250) NOT NULL, 
+    [GroupId] INT NOT NULL, 
+    CONSTRAINT [FK_Ledger_ToGroup] FOREIGN KEY (GroupId) REFERENCES [Group](Id)
+)
