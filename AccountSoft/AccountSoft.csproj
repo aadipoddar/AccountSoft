@@ -8,4 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AccountSoftLibrary\AccountSoftLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="AccountSoftLibrary.Data" />
+    <Using Include="AccountSoftLibrary.DataAccess" />
+    <Using Include="AccountSoftLibrary.Models" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="8a8e1ade-c5af-4c68-9330-e61469300f02" ChangeDateTime="07/13/2025 13:03:38">
+    <Property Name="ElementName" Value="[dbo].[FinancialYear].[StartYear]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FinancialYear]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StartDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28d00ce6-08ae-4901-804e-a57707c94403" ChangeDateTime="07/13/2025 13:03:42">
+    <Property Name="ElementName" Value="[dbo].[FinancialYear].[EndYear]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FinancialYear]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EndDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3131aa02-2181-40bc-8c1e-48e17b4b5352" ChangeDateTime="07/13/2025 13:03:57">
+    <Property Name="ElementName" Value="[dbo].[FinancialYear].[Statis]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FinancialYear]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Status" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3c49a80f-a0e0-4ece-b3b6-bc8e21281c37" ChangeDateTime="07/13/2025 13:21:21">
+    <Property Name="ElementName" Value="[dbo].[Accounting].[AccountingDateTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Accounting]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountingDate" />
+  </Operation>
+</Operations>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AccountSoft"
         mc:Ignorable="d"
         Title="AccountingWindow" Height="450" Width="800"
-		WindowState="Maximized">
+		WindowState="Maximized" Loaded="Window_Loaded">
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -15,7 +15,7 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
-		<Border BorderBrush="Goldenrod" BorderThickness="2" Margin="10" Padding="15" CornerRadius="50">
+		<Border BorderBrush="Goldenrod" BorderThickness="2" Margin="5" Padding="10" CornerRadius="20">
 			<Grid HorizontalAlignment="Center">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -26,21 +26,73 @@
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
 
-				<ComboBox x:Name="voucherTypeComboBox" Margin="10" Padding="5" MinWidth="200" />
-				<DatePicker x:Name="accountingDatePicker" Margin="10" Padding="5" Grid.Column="1" MinWidth="200"  />
-				<TextBox x:Name="referenceNoTextBox" Margin="10" Padding="5" Grid.Column="2" MinWidth="200" />
+				<TextBlock Text="Voucher Type" HorizontalAlignment="Center" />
+				<TextBlock Text="Accounting Date" HorizontalAlignment="Center" Grid.Column="1" />
+				<TextBlock Text="Reference No." HorizontalAlignment="Center" Grid.Column="2" />
+				<TextBlock Text="Remarks" HorizontalAlignment="Center" Grid.Column="3" />
 
-				<TextBox x:Name="remarksTextBox" Margin="10" Padding="5" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" />
+				<ComboBox x:Name="voucherTypeComboBox" Margin="10" Padding="5" Grid.Row="1" MinWidth="100" SelectionChanged="voucherTypeComboBox_SelectionChanged" />
+				<DatePicker x:Name="accountingDatePicker" Margin="10" Padding="5" Grid.Row="1" Grid.Column="1" MinWidth="100" SelectedDateChanged="accountingDatePicker_SelectedDateChanged"/>
+				<TextBox x:Name="referenceNoTextBox" Margin="10" Padding="5" Grid.Row="1" Grid.Column="2" MinWidth="100" IsReadOnly="True" />
+				<TextBox x:Name="remarksTextBox" Margin="10" Padding="5" Grid.Row="1" Grid.Column="3" MinWidth="200" />
 			</Grid>
 		</Border>
 
-		<Border BorderBrush="Goldenrod" BorderThickness="2" Margin="10" Padding="15" CornerRadius="20" Grid.Row="1">
-			
+		<Border BorderBrush="Goldenrod" BorderThickness="2" Margin="5" Padding="5" CornerRadius="20" Grid.Row="1">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Border BorderBrush="IndianRed" BorderThickness="2" Margin="5" Padding="5" CornerRadius="20">
+					<Grid HorizontalAlignment="Center">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="Ledger" HorizontalAlignment="Center" />
+						<TextBlock Text="Amount" HorizontalAlignment="Center" Grid.Column="1" />
+						<TextBlock Text="Type" HorizontalAlignment="Center" Grid.Column="2" />
+						<TextBlock Text="Remarks" HorizontalAlignment="Center" Grid.Column="3" />
+
+						<ComboBox x:Name="ledgerComboBox" Margin="10" Padding="5" MinWidth="200" Grid.Row="1"
+								  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Stylus.IsFlicksEnabled="False" />
+						<TextBox x:Name="amountTextBox" Margin="10" Padding="5" MinWidth="150" Grid.Row="1" Grid.Column="1" PreviewTextInput="amountTextBox_PreviewTextInput" />
+						<ComboBox x:Name="typeComboBox" Margin="10" Padding="5" MinWidth="50" Grid.Row="1" Grid.Column="2" />
+						<TextBox x:Name="remarksTextBpx" Margin="10" Padding="5" MinWidth="200" Grid.Row="1" Grid.Column="3" />
+						<Button x:Name="addLedgerButton" Margin="10" Padding="5" MinWidth="100" Grid.Row="1" Grid.Column="4" Content="Add" />
+					</Grid>
+				</Border>
+
+				<Grid Grid.Row="1" HorizontalAlignment="Center">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Text="Search" Margin="5" Padding="5" />
+					<TextBox x:Name="searchTextBpx" Margin="5" Padding="5" MinWidth="200" Grid.Column="1" />
+				</Grid>
+
+				<DataGrid x:Name="ledgersDataGrid" Margin="10" Padding="5" Grid.Row="2" />
+			</Grid>
 		</Border>
 
-		<Border BorderBrush="Goldenrod" BorderThickness="2" Margin="10" Padding="15" CornerRadius="20" Grid.Row="2">
+		<Border BorderBrush="Goldenrod" BorderThickness="2" Margin="10" Padding="10" CornerRadius="20" Grid.Row="2">
 			<TextBox x:Name="balancesTextBox" Text="0" Margin="10" Padding="5" HorizontalAlignment="Center" MinWidth="200" IsReadOnly="True" />
 		</Border>
 	</Grid>

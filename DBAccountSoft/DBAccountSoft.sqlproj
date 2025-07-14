@@ -59,6 +59,10 @@
     <Folder Include="Tables" />
     <Folder Include="Views" />
     <Folder Include="StoredProcedures" />
+    <Folder Include="PublishLocations" />
+    <Folder Include="StoredProcedures\LoadData" />
+    <Folder Include="StoredProcedures\LoadData\Common" />
+    <Folder Include="StoredProcedures\Insert" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Group.sql" />
@@ -67,5 +71,20 @@
     <Build Include="Tables\Accounting.sql" />
     <Build Include="Tables\AccountingDetails.sql" />
     <Build Include="Tables\Company.sql" />
+    <Build Include="Tables\FinancialYear.sql" />
+    <Build Include="StoredProcedures\LoadData\Load_FinancialYear_By_Date.sql" />
+    <Build Include="StoredProcedures\LoadData\Common\Load_TableData.sql" />
+    <Build Include="StoredProcedures\LoadData\Common\Load_TableData_By_Id.sql" />
+    <Build Include="StoredProcedures\LoadData\Common\Load_TableData_By_Status.sql" />
+    <Build Include="StoredProcedures\LoadData\Load_LastAccounting_By_FinancialYear.sql" />
+    <Build Include="Tables\AccountType.sql" />
+    <Build Include="StoredProcedures\Insert\Insert_Ledger.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DBAccountSoft.publish.xml" />
+    <None Include="PublishLocations\DBAccountSoft.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DBAccountSoft.refactorlog" />
   </ItemGroup>
 </Project>

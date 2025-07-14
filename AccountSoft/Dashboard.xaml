@@ -6,14 +6,17 @@
         xmlns:local="clr-namespace:AccountSoft"
         mc:Ignorable="d"
         Title="Dashboard" Height="450" Width="400"
-		WindowStartupLocation="CenterScreen">
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+		WindowStartupLocation="CenterScreen"
+		Loaded="Window_Loaded">
+	<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		
-		<Button x:Name="voucherButton" Content="Vouchers" Width="140" Height="40" Margin="10" Click="voucherButton_Click"/>
-		<Button x:Name="masterButton" Grid.Row="1" Content="Masters" Width="140" Height="40" Margin="10" Click="masterButton_Click"/>
+
+		<ComboBox x:Name="companyComboBox" Width="140" Margin="10" Padding="5" />
+		<Button x:Name="voucherButton" Content="Vouchers" Width="140" Height="40" Margin="10" Padding="5" Click="voucherButton_Click" Grid.Row="1" />
+		<Button x:Name="masterButton" Content="Masters" Width="140" Height="40" Margin="10" Padding="5" Click="masterButton_Click" Grid.Row="2" />
 	</Grid>
 </Window>
