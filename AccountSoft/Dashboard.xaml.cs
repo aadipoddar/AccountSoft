@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using AccountSoft.Accounting;
+
 namespace AccountSoft;
 
 /// <summary>

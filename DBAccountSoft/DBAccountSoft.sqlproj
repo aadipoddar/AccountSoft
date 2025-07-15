@@ -79,6 +79,8 @@
     <Build Include="StoredProcedures\LoadData\Load_LastAccounting_By_FinancialYear.sql" />
     <Build Include="Tables\AccountType.sql" />
     <Build Include="StoredProcedures\Insert\Insert_Ledger.sql" />
+    <Build Include="StoredProcedures\Insert\Insert_Accounting.sql" />
+    <Build Include="StoredProcedures\Insert\Insert_AccountingDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DBAccountSoft.publish.xml" />

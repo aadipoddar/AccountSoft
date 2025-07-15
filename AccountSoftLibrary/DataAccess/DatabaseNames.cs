@@ -6,6 +6,7 @@ public static class TableNames
 	public static string AccountingDetails => "AccountingDetails";
 	public static string Company => "Company";
 	public static string Group => "Group";
+	public static string AccountType => "AccountType";
 	public static string Ledger => "Ledger";
 	public static string Voucher => "Voucher";
 }
@@ -21,6 +22,9 @@ public static class StoredProcedureNames
 	public static string LoadLastAccountingByFinancialYearCompanyVoucher => "Load_LastAccounting_By_FinancialYear_Company_Voucher";
 
 	public static string InsertLedger => "Insert_Ledger";
+
+	public static string InsertAccounting => "Insert_Accounting";
+	public static string InsertAccountingDetails => "Insert_AccountingDetails";
 }
 
 public static class ViewNames

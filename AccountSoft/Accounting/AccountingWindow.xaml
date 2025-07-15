@@ -1,9 +1,9 @@
-﻿<Window x:Class="AccountSoft.AccountingWindow"
+﻿<Window x:Class="AccountSoft.Accounting.AccountingWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AccountSoft"
+        xmlns:local="clr-namespace:AccountSoft.Accounting"
         mc:Ignorable="d"
         Title="AccountingWindow" Height="450" Width="800"
 		WindowState="Maximized" Loaded="Window_Loaded">
@@ -37,7 +37,7 @@
 				<ComboBox x:Name="voucherTypeComboBox" Margin="10" Padding="5" Grid.Row="1" MinWidth="100" SelectionChanged="voucherTypeComboBox_SelectionChanged" />
 				<DatePicker x:Name="accountingDatePicker" Margin="10" Padding="5" Grid.Row="1" Grid.Column="1" MinWidth="100" SelectedDateChanged="accountingDatePicker_SelectedDateChanged"/>
 				<TextBox x:Name="referenceNoTextBox" Margin="10" Padding="5" Grid.Row="1" Grid.Column="2" MinWidth="100" IsReadOnly="True" />
-				<TextBox x:Name="accountingRemarksTextBox" Margin="10" Padding="5" Grid.Row="1" Grid.Column="3" MinWidth="200" />
+				<TextBox x:Name="remarksTextBox" Margin="10" Padding="5" Grid.Row="1" Grid.Column="3" MinWidth="200" />
 			</Grid>
 		</Border>
 
@@ -45,51 +45,23 @@
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
 					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
 
-				<Border BorderBrush="IndianRed" BorderThickness="2" Margin="5" Padding="5" CornerRadius="20">
-					<Grid HorizontalAlignment="Center">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto"/>
-							<RowDefinition Height="Auto"/>
-						</Grid.RowDefinitions>
-
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-						</Grid.ColumnDefinitions>
-
-						<TextBlock Text="Ledger" HorizontalAlignment="Center" FontWeight="Bold" />
-						<TextBlock Text="Amount" HorizontalAlignment="Center" Grid.Column="1" FontWeight="Bold" />
-						<TextBlock Text="Type" HorizontalAlignment="Center" Grid.Column="2" FontWeight="Bold" />
-						<TextBlock Text="Remarks" HorizontalAlignment="Center" Grid.Column="3" FontWeight="Bold" />
-
-						<ComboBox x:Name="ledgerComboBox" Margin="10" Padding="5" MinWidth="200" Grid.Row="1"
-								  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" Stylus.IsFlicksEnabled="False" />
-						<TextBox x:Name="amountTextBox" Margin="10" Padding="5" MinWidth="150" Grid.Row="1" Grid.Column="1" PreviewTextInput="amountTextBox_PreviewTextInput" />
-						<ComboBox x:Name="typeComboBox" Margin="10" Padding="5" MinWidth="50" Grid.Row="1" Grid.Column="2" />
-						<TextBox x:Name="ledgerRemarksTextBox" Margin="10" Padding="5" MinWidth="200" Grid.Row="1" Grid.Column="3" />
-						<Button x:Name="addLedgerButton" Margin="10" Padding="5" MinWidth="100" Grid.Row="1" Grid.Column="4" Content="Add" Click="addLedgerButton_Click" />
-					</Grid>
-				</Border>
-
-				<Grid Grid.Row="1" HorizontalAlignment="Center">
+				<Grid HorizontalAlignment="Left">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 
 					<TextBlock Text="Search" Margin="5" Padding="5" FontWeight="Bold" />
-					<TextBox x:Name="searchTextBpx" Margin="5" Padding="5" MinWidth="200" Grid.Column="1" />
+					<TextBox x:Name="searchTextBox" Margin="5" Padding="5" MinWidth="300" Grid.Column="1" TextChanged="searchTextBox_TextChanged" />
 				</Grid>
 
-				<DataGrid x:Name="ledgersDataGrid" Margin="10" Padding="5" Grid.Row="2" ItemsSource="{Binding _accountingCarts}" AutoGenerateColumns="False"
-						  IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow">
+				<Button x:Name="addLedgerButton" Content="Add Ledgers" Margin="10,5" Padding="5" MinWidth="200" HorizontalAlignment="Right" IsDefault="True" Background="BlueViolet" Click="addLedgerButton_Click" />
+
+				<DataGrid x:Name="ledgersDataGrid" Margin="10" Padding="5" Grid.Row="1" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserSortColumns="True" CanUserResizeRows="True" CanUserResizeColumns="True"
+						  IsReadOnly="True" PreviewMouseLeftButtonDown="ledgersDataGrid_PreviewMouseLeftButtonDown">
 					<DataGrid.Columns>
 						<DataGridTextColumn Header="S.No" Binding="{Binding Serial}" Width="Auto" />
 						<DataGridTextColumn Header="Ledger" Binding="{Binding Name}" Width="*" />
@@ -118,8 +90,8 @@
 					<TextBlock Text="Balances" Margin="10,10,0,10" Padding="5" FontWeight="Bold" />
 					<TextBox x:Name="balancesTextBox" Text="0" Margin="10" Padding="5" HorizontalAlignment="Center" MinWidth="120" IsReadOnly="True" Grid.Column="1" />
 				</Grid>
-				
-				<Button x:Name="saveButton" Content="Save" Margin="10" Padding="5" MinWidth="100" Grid.Column="1" HorizontalAlignment="Center" />
+
+				<Button x:Name="saveButton" Content="Save" Margin="10" Padding="5" MinWidth="150" Grid.Column="1" HorizontalAlignment="Center" Style="{DynamicResource AccentButtonStyle}" Click="saveButton_Click" />
 
 				<Grid Grid.Column="2" HorizontalAlignment="Right">
 					<TextBox x:Name="debitsTotalTextBox" Text="0" Margin="10,10,140,10" Padding="5" MinWidth="120" IsReadOnly="True" HorizontalContentAlignment="Right" />
