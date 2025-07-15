@@ -22,3 +22,13 @@ public class AccountingDetailsModel
 	public string Remarks { get; set; }
 	public bool Status { get; set; }
 }
+
+public class AccountingCartModel
+{
+	public int Serial { get; set; }
+	public int Id { get; set; }
+	public string Name { get; set; }
+	public string Remarks { get; set; }
+	public decimal? Debit { get; set; }
+	public decimal? Credit { get; set; }
+}

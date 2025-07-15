@@ -8,6 +8,7 @@ namespace AccountSoft;
 public partial class AccountingWindow : Window
 {
 	private readonly int _selectedCompany;
+	private readonly List<AccountingCartModel> _accountingCarts = [];
 
 	public AccountingWindow(int selectedCompany)
 	{
@@ -56,4 +57,37 @@ public partial class AccountingWindow : Window
 
 	private void amountTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) =>
 		Helper.ValidateDecimalInput(sender, e);
+
+	private void addLedgerButton_Click(object sender, RoutedEventArgs e)
+	{
+		string ledgerName = ledgerComboBox.SelectedItem is LedgerModel selectedLedger ? selectedLedger.Name : string.Empty;
+		string amountText = amountTextBox.Text;
+		string remarks = ledgerRemarksTextBox.Text;
+
+		if (string.IsNullOrEmpty(ledgerName) || string.IsNullOrEmpty(amountText))
+		{
+			MessageBox.Show("Please select a ledger and enter an amount.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+			return;
+		}
+
+		if (decimal.TryParse(amountText, out decimal amount))
+		{
+			_accountingCarts.Add(new AccountingCartModel
+			{
+				Id = ledgerComboBox.SelectedValue is null ? 0 : (int)ledgerComboBox.SelectedValue,
+				Serial = _accountingCarts.Count + 1,
+				Name = ledgerName,
+				Remarks = remarks,
+				Debit = typeComboBox.SelectedIndex == 0 ? amount : null,
+				Credit = typeComboBox.SelectedIndex == 1 ? amount : null
+			});
+
+			ledgersDataGrid.ItemsSource = null;
+			ledgersDataGrid.ItemsSource = _accountingCarts;
+		}
+		else
+		{
+			MessageBox.Show("Invalid amount entered.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+		}
+	}
 }
