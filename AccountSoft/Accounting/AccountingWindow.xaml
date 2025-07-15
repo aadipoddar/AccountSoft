@@ -64,10 +64,22 @@
 						  IsReadOnly="True" PreviewMouseLeftButtonDown="ledgersDataGrid_PreviewMouseLeftButtonDown">
 					<DataGrid.Columns>
 						<DataGridTextColumn Header="S.No" Binding="{Binding Serial}" Width="Auto" />
-						<DataGridTextColumn Header="Ledger" Binding="{Binding Name}" Width="*" />
+						<DataGridTextColumn Header="Ledger Account" Binding="{Binding Name}" Width="*" />
 						<DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}" Width="*" />
-						<DataGridTextColumn Header="Debit" Binding="{Binding Debit}" Width="120" />
-						<DataGridTextColumn Header="Credit" Binding="{Binding Credit}" Width="120" />
+						<DataGridTextColumn Header="Debit" Binding="{Binding Debit}" Width="120">
+							<DataGridTextColumn.CellStyle>
+								<Style TargetType="DataGridCell">
+									<Setter Property="HorizontalAlignment" Value="Right"/>
+								</Style>
+							</DataGridTextColumn.CellStyle>
+						</DataGridTextColumn>
+						<DataGridTextColumn Header="Credit" Binding="{Binding Credit}" Width="120">
+							<DataGridTextColumn.CellStyle>
+								<Style TargetType="DataGridCell">
+									<Setter Property="HorizontalAlignment" Value="Right"/>
+								</Style>
+							</DataGridTextColumn.CellStyle>
+						</DataGridTextColumn>
 					</DataGrid.Columns>
 				</DataGrid>
 			</Grid>
